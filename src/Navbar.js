@@ -8,7 +8,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
-		borderBottom: '1px solid black',
+		borderBottom: '1px solid lightgray',
+		position: 'fixed',
+		top: 0,
 	},
 	toolbar: {
 		minHeight: 0,
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const NavButton = withStyles({
 	root: {
 		flexGrow: 1,
-		borderLeft: '1px solid black',
+		borderLeft: '1px solid lightgray',
 	},
 })(Button);
 

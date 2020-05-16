@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography';
 import './App.css';
+import Work from './Work';
 import Navbar from './Navbar';
 import Bottom from './Bottom';
 
@@ -33,10 +33,8 @@ function App() {
   console.log(theme);
   return (
     <ThemeProvider theme={theme}>
+      <Work />
       <Navbar />
-      <div className="App">
-        <Typography variant="h1">TENUIOUR</Typography>
-      </div>
       <Bottom />
     </ThemeProvider>
   );

@@ -9,15 +9,15 @@ import {faInstagram} from '@fortawesome/free-brands-svg-icons';
 
 const useStyles = makeStyles((theme) => ({
 	footer: {
-		position: 'absolute',
+		position: 'fixed',
 		bottom: 0,
-		width: '100%',
-		borderTop: '1px solid black',
+		width: '100vw',
+		borderTop: '1px solid lightgray',
 	},
 	igButton: {
 		paddingLeft: '24px',
 		paddingRight: '72px',
-		borderRight: '1px solid black',
+		borderRight: '1px solid lightgray',
 		'&:hover': {
 			textDecoration: 'none',
 		},
