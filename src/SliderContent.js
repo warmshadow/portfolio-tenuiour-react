@@ -35,11 +35,9 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		fontSize: '1em',
 		fontStyle: 'italic',
-		fontFamily: 'Hind, sans-serif'
 	},
 	description: {
 		fontSize: '0.875em',
-		fontFamily: 'Hind, sans-serif',
 		color: 'darkgray',
 	},
 }));
@@ -54,7 +52,7 @@ function SliderContent(props) {
 			</div>
 			<div className={classes.desc}>
 				<Typography className={classes.title} variant="h3" align="center" paragraph={true}>{props.name}</Typography>
-				<Typography className={classes.description} variant="p" align="center">{props.desc}</Typography>
+				<Typography className={classes.description} variant="subtitle1" align="center">{props.desc}</Typography>
 			</div>
 		</div>
 	);

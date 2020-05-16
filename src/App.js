@@ -2,8 +2,11 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import './App.css';
 import Work from './Work';
+import About from "./About";
+import Contact from "./Contact";
 import Navbar from './Navbar';
 import Bottom from './Bottom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 
 const theme = createMuiTheme({
   typography: {
@@ -32,11 +35,15 @@ const theme = createMuiTheme({
 function App() {
   console.log(theme);
   return (
-    <ThemeProvider theme={theme}>
-      <Work />
-      <Navbar />
-      <Bottom />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        {/*<Work />*/}
+        {/*<About />*/}
+        <Contact />
+        <Navbar />
+        <Bottom />
+      </ThemeProvider>
+    </Router>
   );
 }
 
