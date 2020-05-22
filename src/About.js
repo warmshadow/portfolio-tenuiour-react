@@ -5,11 +5,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
 	about: {
-		width: '100vw',
 		height: '100vh',
-		padding: 'calc(1.6 * 0.875rem + 13px) 0 calc(1.6 * 0.875rem + 13px)',
+		marginBottom: '1px',
 		display: 'flex',
-		justifyContent: 'space-around',
+		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	aboutText: {
@@ -17,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function About() {
+function About(props) {
 	const classes = useStyles();
 	return(
-		<Box className={classes.about}>
-		<Box className={classes.aboutText}>
-			<Typography variant="subtitle1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vestibulum dignissim hendrerit. Nullam laoreet enim quam, id maximus enim vehicula ac. Suspendisse nisl urna, condimentum eget dictum eu, ultricies non nisl. Etiam ex ex, consectetur quis bibendum eu, venenatis non leo. In ante massa, porta pretium elit id, cursus imperdiet orci. Curabitur sed elit ut augue eleifend lacinia vitae nec erat. Sed aliquam tellus quis ornare imperdiet. Phasellus suscipit sapien vel molestie tincidunt.</Typography>
-		</Box>
+		<Box className={classes.about} pt={9} pb={6}>
+			<Box className={classes.aboutText}>
+				<Typography variant="subtitle1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vestibulum dignissim hendrerit. Nullam laoreet enim quam, id maximus enim vehicula ac. Suspendisse nisl urna, condimentum eget dictum eu, ultricies non nisl. Etiam ex ex, consectetur quis bibendum eu, venenatis non leo. In ante massa, porta pretium elit id, cursus imperdiet orci. Curabitur sed elit ut augue eleifend lacinia vitae nec erat. Sed aliquam tellus quis ornare imperdiet. Phasellus suscipit sapien vel molestie tincidunt.</Typography>
+			</Box>
 		</Box>
 	);
 }

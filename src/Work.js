@@ -1,21 +1,16 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { Route } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Slider from './Slider';
+import Collection from './Collection';
 
-const useStyles = makeStyles((theme) => ({
-	work: {
-		height: '100vh',
-		padding: 'calc(1.6 * 0.875rem + 13px) 0 calc(1.6 * 0.875rem + 13px)',
-	},
-}));
-
-function Work() {
-	const classes = useStyles();
+function Work(props) {
 	return(
-		<div className={classes.work}>
-			<Slider />
-		</div>
+			<Box component={Container} px={5} pt={9} pb={6} >
+				<Route exact path="/:route" render={(props) => <Slider {...props} />}/>
+				<Collection history={props.history} />
+			</Box>
 	);
 }
 

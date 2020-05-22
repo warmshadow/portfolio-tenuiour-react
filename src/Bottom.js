@@ -5,19 +5,19 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram} from '@fortawesome/free-brands-svg-icons';
-// import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	footer: {
 		position: 'fixed',
 		bottom: 0,
-		width: '100vw',
-		borderTop: '1px solid lightgray',
+		width: '100%',
+		backgroundColor: 'rgba(254, 253, 250, 0.8)',
+		minHeight: '48px',
 	},
 	igButton: {
 		paddingLeft: '24px',
 		paddingRight: '72px',
-		borderRight: '1px solid lightgray',
+		textTransform: 'none',
 		'&:hover': {
 			textDecoration: 'none',
 		},
@@ -27,8 +27,12 @@ const useStyles = makeStyles((theme) => ({
 function Bottom() {
 	const classes = useStyles();
 	return(
-		<Box component="footer" className={classes.footer}>
-			<Button className={classes.igButton} component={Link} href="https://instagram.com">
+		<Box component="footer" display="flex" className={classes.footer}>
+			<Button 
+				className={classes.igButton} 
+				component={Link} 
+				href="https://instagram.com/tenuiour"
+			>
 				<Box component="span" pr={0.5}>
 					<FontAwesomeIcon icon={faInstagram} />
 				</Box>

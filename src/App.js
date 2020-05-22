@@ -1,12 +1,13 @@
 import React from 'react';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Work from './Work';
 import About from "./About";
 import Contact from "./Contact";
 import Navbar from './Navbar';
 import Bottom from './Bottom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 const theme = createMuiTheme({
   typography: {
@@ -18,14 +19,19 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        lineHeight: 1.6,
-        textTransform: 'none',
+        minWidth: '6%',
+        lineHeight: 1.3,
+        padding: 0,
+        fontWeight: 400,
         borderRadius: 0,
-        justifyContent: 'start',
-        transition: 'all 0.7s',
+        justifyContent: 'flex-start',
+        transition: 'all 0.2s ease-in',
+        color: '#828579',
+        fontSize: '0.8em',
+        letterSpacing: 1.3,
         '&:hover': {
-          backgroundColor: '#000',
-          color: '#fff',
+          backgroundColor: 'none',
+          color: '#333330',
         },
       },
     },
@@ -33,17 +39,20 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  console.log(theme);
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        {/*<Work />*/}
-        {/*<About />*/}
-        <Contact />
+    <ThemeProvider theme={theme}>
+      <Router>
+        <ScrollToTop />
         <Navbar />
+        <Switch>
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path={["/","/:route"]} component={Work} />
+          <Redirect to="/" />
+        </Switch>
         <Bottom />
-      </ThemeProvider>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 }
 

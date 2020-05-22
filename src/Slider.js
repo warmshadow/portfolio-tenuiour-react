@@ -1,55 +1,46 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React, { useEffect } from 'react';
 import SliderContent from './SliderContent';
-import images from './images';
-import Arrow from './Arrow';
+import { Redirect } from 'react-router-dom';
+import images from './info/images';
 
-const useStyles = makeStyles((theme) => ({
-	slider: {
-		height: '100%',
-	},
-}));
+function Slider(props) {
+  const {images, idx} = props;
+  const length = images.length;
+  const prev = (idx === 0) ? images[length - 1].route : images[idx - 1].route;
+  const next = (idx === length - 1) ? images[0].route : images[idx + 1].route;
 
+  const onDown = event => {
+    const matchesLeft = event.keyCode === 37; //arrowLeft
+    const matchesRight = event.keyCode === 39; //arrowRight
 
-function Slider() {
+    matchesLeft && props.history.push(`/${prev}`);
+    matchesRight && props.history.push(`/${next}`);
+  };
+  // Bind and unbind events
+  useEffect(() => {
+      window.addEventListener("keydown", onDown);
+      return () => {
+        window.removeEventListener("keydown", onDown);
+      }  
+  });
 
-	const [state, setState] = useState ({
-		activeIdx: 0,
-	});
-	const { activeIdx } = state;
-
-	const nextSlide = () => {
-    if (activeIdx === images.length - 1) {
-      return setState({
-        activeIdx: 0
-      })
-    }
-
-    setState({
-      activeIdx: activeIdx + 1,
-    })
-  }
-
-  const prevSlide = () => {
-    if (activeIdx === 0) {
-      return setState({
-        activeIdx: images.length - 1
-      })
-    }
-
-    setState({
-      activeIdx: activeIdx - 1,
-    })
-  }
-	const classes = useStyles();
-	return(
-		<div className={classes.slider}>
-			<SliderContent image={images[activeIdx].src} name={images[activeIdx].name} desc={images[activeIdx].desc}/>
-			<Arrow direction="left" handleClick={prevSlide}/>
-			<Arrow direction="right" handleClick={nextSlide}/>
-		</div>
-	);
+  return(
+      <SliderContent 
+        src={images[idx].src}
+        name={images[idx].name} 
+        description={images[idx].desc} 
+        portrait={images[idx].portrait} 
+        path={{prev: prev, next: next}}
+      />
+ );
 }
 
-export default Slider;
+const shouldRender = idx => { return (idx === -1 ? false : true) }
+
+export default (props) => {
+  const route = props.match.params.route;
+  const idx = images.findIndex(image => image.route === route);
+
+  if(!shouldRender(idx)) return <Redirect to='/' />
+  return <Slider images={images} idx={idx} history={props.history} />
+}

@@ -1,26 +1,31 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 
 const useStyles = makeStyles((theme) => ({
-	left: {
-		position: 'fixed',
-		top: '40%',
-		left: '50px',
-	},
-	right: {
-		position: 'fixed',
-		top: '40%',
-		right: '50px',
-	},
+	arrow: {
+		color: '#828579',
+		opacity: 0.8,
+		fontSize: '1.3rem',
+	}
 }));
 
-function Arrow({direction, handleClick}) {
+function Arrow({path, direction, handleClick}) {
 	const classes = useStyles();
 	return(
-		<div>
-			<Button className={classes[direction]} onClick={handleClick}>{direction}</Button>
-		</div>
+			<IconButton 
+				component={RouterLink} 
+				to={`/${path}`} 
+				onClick={handleClick}
+			> 
+				<FontAwesomeIcon 
+					icon={direction === 'left' ? faArrowAltCircleLeft : faArrowAltCircleRight } 
+					className={classes.arrow} 
+				/>
+			</IconButton>
 	);
 }
 
