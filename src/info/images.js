@@ -23,7 +23,7 @@ const images = [
 		src: [
 			"./works/002.jpg",
 		], 
-		name: "double trouble",
+		name: "Double trouble",
 		portrait: true,
 		route: "double-trouble"
 	},
@@ -69,7 +69,7 @@ const images = [
 			"./works/007.jpg",
 			"./works/007_1.jpg"
 		], 
-		name: "Outfits.",
+		name: "Outfits",
 		portrait: true,
 		route: "outfits"
 	},
@@ -87,7 +87,7 @@ const images = [
 		src: [
 			"./works/009.jpg",
 		], 
-		name: "Nida and the seagulls.",
+		name: "Nida and the seagulls",
 		portrait: true,
 		route: "nida-and-the-seagulls"
 	},
