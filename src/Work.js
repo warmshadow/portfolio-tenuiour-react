@@ -7,10 +7,10 @@ import Collection from './Collection';
 
 function Work(props) {
 	return(
-			<Box component={Container} px={5} pt={9} pb={6} >
-				<Route exact path="/:route" render={(props) => <Slider {...props} />}/>
+			<Container component={Box} maxWidth="xl" px={10} pt={9} pb={6}>
+				<Route exact path="/:route" render={(props) => <Slider {...props}/>}/>
 				<Collection history={props.history} />
-			</Box>
+			</Container>
 	);
 }
 

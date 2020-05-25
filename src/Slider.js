@@ -25,13 +25,14 @@ function Slider(props) {
   });
 
   return(
-      <SliderContent 
-        src={images[idx].src}
-        name={images[idx].name} 
-        description={images[idx].desc} 
-        portrait={images[idx].portrait} 
-        path={{prev: prev, next: next}}
-      />
+          <SliderContent 
+            src={images[idx].src}
+            name={images[idx].name} 
+            description={images[idx].desc} 
+            portrait={images[idx].portrait} 
+            path={{prev: prev, next: next}}
+            location={props.location}
+          />
  );
 }
 
@@ -42,5 +43,5 @@ export default (props) => {
   const idx = images.findIndex(image => image.route === route);
 
   if(!shouldRender(idx)) return <Redirect to='/' />
-  return <Slider images={images} idx={idx} history={props.history} />
+  return <Slider images={images} idx={idx} {...props} />
 }

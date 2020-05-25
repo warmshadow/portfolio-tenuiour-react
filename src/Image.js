@@ -25,8 +25,7 @@ function Image(props) {
 			className={classes.image} 
 			src={require(`${image.src[0]}`)}
 			onClick={() => handleClick(image.route)}
-		>
-		</CardMedia>
+		/>
 	);
 }
 

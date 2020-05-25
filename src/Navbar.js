@@ -38,9 +38,7 @@ const useStyles = makeStyles((theme) => ({
 function Navbar(props) {
 	const curPath = props.location.pathname;
 	const isActive = () => { 
-		if(!curPath.startsWith("/about") 
-			&& !curPath.startsWith("/contact")
-		) return true
+		if (!curPath.startsWith("/about")) return true
 		else return false
 	};
 
@@ -68,14 +66,6 @@ function Navbar(props) {
 						activeClassName={classes.active}
 					>
 						About
-					</Button>
-					<Button 
-						component={NavLink} 
-						to="/contact" 
-						exact 
-						activeClassName={classes.active} 
-					>
-						Contact
 					</Button>
 				</Toolbar>
 		</AppBar>

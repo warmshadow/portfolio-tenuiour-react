@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 		minHeight: '48px',
 	},
 	igButton: {
+		display: 'none', //for now
 		paddingLeft: '24px',
 		paddingRight: '72px',
 		textTransform: 'none',

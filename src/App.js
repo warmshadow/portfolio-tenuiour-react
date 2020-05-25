@@ -2,7 +2,6 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Work from './Work';
 import About from "./About";
-import Contact from "./Contact";
 import Navbar from './Navbar';
 import Bottom from './Bottom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -15,6 +14,9 @@ const theme = createMuiTheme({
       '"Hind"',
       'sans-serif',
     ].join(','),
+    subtitle1: {
+      fontSize: '0.9rem',
+    }
   },
   overrides: {
     MuiButton: {
@@ -46,7 +48,6 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
           <Route exact path={["/","/:route"]} component={Work} />
           <Redirect to="/" />
         </Switch>
