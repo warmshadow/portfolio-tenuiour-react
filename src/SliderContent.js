@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import Arrow from './Arrow';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Hidden from '@material-ui/core/Hidden';
 
 const useStyles = makeStyles((theme) => ({
 	name: {
@@ -16,8 +16,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	content: {
 		paddingTop: '1.5rem',
-		paddingBottom: '3rem',
-		minHeight: 'calc(100vh - 72px)',
+		[theme.breakpoints.up('lg')]: {
+			paddingBottom: '3rem',
+			minHeight: 'calc(100vh - 72px)',
+		}
 	},
 	imgNotLast: {
 		paddingBottom: '3rem',
@@ -28,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 		animation: '$FadeIn 0.5s ease-in-out',
 	},
 	description: {
-		fontSize: '0.875em',
 		color: 'darkgray',
 	},
 	'@keyframes FadeIn': {
@@ -44,23 +45,26 @@ const useStyles = makeStyles((theme) => ({
 function SliderContent(props) {
 	const { src, name, description, portrait, path } = props;
 	const classes = useStyles();
-	const screenPortrait = useMediaQuery('(orientation:portrait)');
 	return(
 		<Box pb={6}>
 			<Grid container justify="center">
+				<Hidden xsDown>
 				<Grid 
 					item 
-					container 
+					container
 					xs={1} 
 					justify="flex-start" 
 					alignItems="flex-start"
 				>
 					<Arrow path={path.prev} direction="left"/>
 				</Grid>
+				</Hidden>
 				<Grid 
 					item 
 					container 
-					xs={10} 
+					xs={8}
+					sm={10} 
+					lg={8}
 					justify="center" 
 					alignItems="center"
 				>
@@ -72,6 +76,7 @@ function SliderContent(props) {
 						{name}
 					</Typography>
 				</Grid>
+				<Hidden xsDown>
 				<Grid 
 					item 
 					container 
@@ -81,9 +86,11 @@ function SliderContent(props) {
 				>
 					<Arrow path={path.next} direction="right"/>
 				</Grid>
+				</Hidden>
 				<Grid 
 					item 
-					xs={screenPortrait ? 11 : (portrait ? 7 : 10)} 
+					xs={12}
+					lg={portrait ? 7 : 10}
 					className={classes.content}
 				>
 					{src.map((src,i,sources) =>
