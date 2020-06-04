@@ -12,7 +12,10 @@ const useStyles = makeStyles((theme) => ({
 function DrawerMenu(props) {
 	const classes = useStyles();
 	return(
-	    <Box className={classes.drawer}>
+	    <Box 
+	    	className={classes.drawer} 
+	    	style={{visibility: props.visible ? 'visible' : 'hidden'}}
+	    >
 	    	{props.children}
 			</Box>
 	);

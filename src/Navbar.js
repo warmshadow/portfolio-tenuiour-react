@@ -12,6 +12,8 @@ import DrawerMenu from './DrawerMenu';
 const useStyles = makeStyles((theme) => ({
 	appBar: {
 		backgroundColor: 'rgba(254, 253, 250, 0.8)',
+		transition: 'transform 450ms cubic-bezier(0.4, 0, 0.6, 1)',
+		transform: 'translateY(-110px)',
 	},
 	title: {
 		position: 'absolute',
@@ -97,20 +99,19 @@ function Navbar(props) {
 	const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
   const transformStyle = {
-  	transition: 'transform 450ms cubic-bezier(0.4, 0, 0.6, 1)',
-  	transform: drawerOpen ? 'translateY(0)' : 'translateY(-110px)',
+  	transform: xsDown && (
+			drawerOpen 
+				? 'translateY(0)' 
+				: 'translateY(-110px)'
+		),
   }
 
 
 	return(
 		<AppBar elevation={0} style={transformStyle} className={classes.appBar}>
-			{
-				xsDown && (
-					<DrawerMenu>
-			    	{buttons()}
-			    </DrawerMenu>
-			  )
-    	}
+			<DrawerMenu visible={xsDown}>
+	    	{buttons()}
+	    </DrawerMenu>
 			<Toolbar className={classes.toolbar}>
 			<Typography variant='h6'>
 				<NavLink to="/" className={classes.title}>
