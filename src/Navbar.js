@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import NavbarDrawer from './NavbarDrawer';
+import DrawerMenu from './DrawerMenu';
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -96,29 +96,27 @@ function Navbar(props) {
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-  const dynamicStyle = {
-  	transition: 'margin-top 450ms',
-  	transitionTimingFunction: drawerOpen 
-  		? 'cubic-bezier(0, 0, 0.2, 1)' 
-  		: 'cubic-bezier(0.4, 0, 0.6, 1)',
-  	marginTop: drawerOpen ? 113 : 0,
-  };
+  const transformStyle = {
+  	transition: 'transform 450ms cubic-bezier(0.4, 0, 0.6, 1)',
+  	transform: drawerOpen ? 'translateY(0)' : 'translateY(-110px)',
+  }
+
 
 	return(
-		<AppBar elevation={0} style={dynamicStyle} className={classes.appBar}>
+		<AppBar elevation={0} style={transformStyle} className={classes.appBar}>
 			{
 				xsDown && (
-					<NavbarDrawer open={drawerOpen}>
+					<DrawerMenu>
 			    	{buttons()}
-			    </NavbarDrawer>
+			    </DrawerMenu>
 			  )
     	}
+			<Toolbar className={classes.toolbar}>
 			<Typography variant='h6'>
 				<NavLink to="/" className={classes.title}>
 					tenuiour
 				</NavLink>
 			</Typography>
-			<Toolbar className={classes.toolbar}>
 				{
 					xsDown 
 						? <Button 
